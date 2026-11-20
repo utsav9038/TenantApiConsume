@@ -1,0 +1,83 @@
+@model IEnumerable<TenatConsume.Models.Tenant>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    if (TempData["SuccessMessage"] != null)
+    {
+        <p>@TempData["SuccessMessage"]</p>
+    }
+}
+
+<h1>Get Tenant Record</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TenantName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatabaseConnection)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceUserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServicePassword)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenantUsers)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.TenantName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.DatabaseConnection)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.ServiceUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.ServiceUserId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.ServicePassword)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.TenantUsers)
+            </td>
+            <td>
+                    <a asp-action="EditTenant" asp-route-Tenantid="@item.TenantId">Edit</a> |
+                <a asp-action="Details" asp-route-Tenantid="@item.TenantId">Details</a> |
+                <a asp-action="Delete" asp-route-Tenantid="@item.TenantId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
